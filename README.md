@@ -67,26 +67,32 @@ body, status, err := client.Do(ctx, req)
 ## Architecture
 
 ```
-                 ┌──────────────────────────────────────────┐
-                 │            resilient.Client               │
-                 ├──────────────────────────────────────────┤
-Get/Post/DoJSON ─►  Request Hook ──► Rate Limiter ──────────┤
-                 │                    (token bucket)         │
-                 │       ┌────────────────────────────┐     │
-                 │       │       Retry Loop            │     │
-                 │       │   ┌──────────────────┐      │     │
-                 │       │   │  http.Client.Do   │      │     │
-                 │       │   └────────┬─────────┘      │     │
-                 │       │            │                │     │
-                 │       │      Response Hook          │     │
-                 │       │            │                │     │
-                 │       │    429/503? ──► backoff      │     │
-                 │       │    + jitter + adaptive       │     │
-                 │       └────────────────────────────┘     │
-                 │                                          │
-                 │  Stats ◄── atomic counters                │
-                 │  Callbacks ◄── OnError/OnSuccess          │
-                 └──────────────────────────────────────────┘
+┌───────────────────────────────────────────────┐
+│              resilient.Client                 │
+├───────────────────────────────────────────────┤
+│                                               │
+│  Get/Post/DoJSON                              │
+│       │                                       │
+│       ▼                                       │
+│  Request Hook ──► Rate Limiter (token bucket) │
+│       │                                       │
+│       ▼                                       │
+│  ┌─────────────────────────────────────────┐  │
+│  │            Retry Loop                   │  │
+│  │                                         │  │
+│  │  ┌───────────────┐                      │  │
+│  │  │ http.Client.Do │                      │  │
+│  │  └───────┬───────┘                      │  │
+│  │          ▼                              │  │
+│  │    Response Hook                        │  │
+│  │          │                              │  │
+│  │    429/503? ──► backoff + jitter        │  │
+│  │                 + adaptive reduction    │  │
+│  └─────────────────────────────────────────┘  │
+│                                               │
+│  Stats ◄── atomic counters                    │
+│  Callbacks ◄── OnError / OnSuccess            │
+└───────────────────────────────────────────────┘
 ```
 
 ## Comparison
