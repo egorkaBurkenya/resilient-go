@@ -1,9 +1,8 @@
 # resilient-go
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/egorkaBurkenya/resilient-go.svg)](https://pkg.go.dev/github.com/egorkaBurkenya/resilient-go)
-[![CI](https://github.com/egorkaBurkenya/resilient-go/actions/workflows/ci.yml/badge.svg)](https://github.com/egorkaBurkenya/resilient-go/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/egorkaBurkenya/resilient-go)](https://goreportcard.com/report/github.com/egorkaBurkenya/resilient-go)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/egorkaBurkenya/resilient-go)](https://github.com/egorkaBurkenya/resilient-go)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Go Reference](https://pkg.go.dev/badge/github.com/egorkaBurkenya/resilient-go.svg)](https://pkg.go.dev/github.com/egorkaBurkenya/resilient-go)
 
 A production-ready Go HTTP client with built-in rate limiting, retry with exponential backoff, and adaptive rate reduction.
 
