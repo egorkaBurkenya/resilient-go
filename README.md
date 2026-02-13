@@ -1,8 +1,8 @@
-# resilient
+# resilient-go
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/egorkaBurkenya/resilient.svg)](https://pkg.go.dev/github.com/egorkaBurkenya/resilient)
-[![CI](https://github.com/egorkaBurkenya/resilient/actions/workflows/ci.yml/badge.svg)](https://github.com/egorkaBurkenya/resilient/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/egorkaBurkenya/resilient)](https://goreportcard.com/report/github.com/egorkaBurkenya/resilient)
+[![Go Reference](https://pkg.go.dev/badge/github.com/egorkaBurkenya/resilient-go.svg)](https://pkg.go.dev/github.com/egorkaBurkenya/resilient-go)
+[![CI](https://github.com/egorkaBurkenya/resilient-go/actions/workflows/ci.yml/badge.svg)](https://github.com/egorkaBurkenya/resilient-go/actions)
+[![Go Report Card](https://goreportcard.com/badge/github.com/egorkaBurkenya/resilient-go)](https://goreportcard.com/report/github.com/egorkaBurkenya/resilient-go)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 A production-ready Go HTTP client with built-in rate limiting, retry with exponential backoff, and adaptive rate reduction.
@@ -22,7 +22,7 @@ Most Go HTTP libraries force you to choose between simplicity and resilience. Yo
 ## Quick Start
 
 ```go
-go get github.com/egorkaBurkenya/resilient
+go get github.com/egorkaBurkenya/resilient-go
 ```
 
 ```go
